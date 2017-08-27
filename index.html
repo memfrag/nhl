@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>NHL</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="nhl.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/Sortable/1.6.0/Sortable.min.js"></script>
+</head>
+<body>
+
+    <div id="eastConferenceList" class="list-group conference-list">
+        <div class="list-group-item"><div class="sprite-nhl sprite-car"><span>Carolina Hurricanes</span></div></div>
+        <div class="list-group-item"><div class="sprite-nhl sprite-cbj"><span>Columbus Blue Jackets</span></div></div>
+        <div class="list-group-item"><div class="sprite-nhl sprite-njd"><span>New Jersey Devils</span></div></div>
+        <div class="list-group-item"><div class="sprite-nhl sprite-nyi"><span>New York Islanders</span></div></div>
+        <div class="list-group-item"><div class="sprite-nhl sprite-nyr"><span>New York Rangers</span></div></div>
+        <div class="list-group-item"><div class="sprite-nhl sprite-phi"><span>Philadelphia Flyers</span></div></div>
+        <div class="list-group-item"><div class="sprite-nhl sprite-pit"><span>Pittsburgh Penguins</span></div></div>
+        <div class="list-group-item"><div class="sprite-nhl sprite-wsh"><span>Washington Capitals</span></div></div>
+        <div class="list-group-item"><div class="sprite-nhl sprite-bos"><span>Boston Bruins</span></div></div>
+        <div class="list-group-item"><div class="sprite-nhl sprite-buf"><span>Buffalo Sabres</span></div></div>
+        <div class="list-group-item"><div class="sprite-nhl sprite-det"><span>Detroit Red Wings</span></div></div>
+        <div class="list-group-item"><div class="sprite-nhl sprite-fla"><span>Florida Panthers</span></div></div>
+        <div class="list-group-item"><div class="sprite-nhl sprite-mtl"><span>Montreal Canadiens</span></div></div>
+        <div class="list-group-item"><div class="sprite-nhl sprite-ott"><span>Ottawa Senators</span></div></div>
+        <div class="list-group-item"><div class="sprite-nhl sprite-tbl"><span>Tampa Bay Lightning</span></div></div>
+        <div class="list-group-item"><div class="sprite-nhl sprite-tor"><span>Toronto Maple Leafs</span></div></div>
+    </div>
+
+    <div id="westConferenceList" class="list-group conference-list">
+        <div class="list-group-item"><div class="sprite-nhl sprite-chi"><span>Chicago Blackhawks</span></div></div>
+        <div class="list-group-item"><div class="sprite-nhl sprite-col"><span>Colorado Avalanche</span></div></div>
+        <div class="list-group-item"><div class="sprite-nhl sprite-dal"><span>Dallas Stars</span></div></div>
+        <div class="list-group-item"><div class="sprite-nhl sprite-min"><span>Minnesota Wild</span></div></div>
+        <div class="list-group-item"><div class="sprite-nhl sprite-nsh"><span>Nashville Predators</span></div></div>
+        <div class="list-group-item"><div class="sprite-nhl sprite-stl"><span>St Louis Blues</span></div></div>
+        <div class="list-group-item"><div class="sprite-nhl sprite-wpg"><span>Winnipeg Jets</span></div></div>
+        <div class="list-group-item"><div class="sprite-nhl sprite-ana"><span>Anaheim Ducks</span></div></div>
+        <div class="list-group-item"><div class="sprite-nhl sprite-ari"><span>Arizona Coyotes</span></div></div>
+        <div class="list-group-item"><div class="sprite-nhl sprite-cgy"><span>Calgary Flames</span></div></div>
+        <div class="list-group-item"><div class="sprite-nhl sprite-edm"><span>Edmonton Oilers</span></div></div>
+        <div class="list-group-item"><div class="sprite-nhl sprite-lak"><span>Los Angeles Kings</span></div></div>
+        <div class="list-group-item"><div class="sprite-nhl sprite-sjs"><span>San Jose Sharks</span></div></div>
+        <div class="list-group-item"><div class="sprite-nhl sprite-van"><span>Vancouver Canucks</span></div></div>
+        <div class="list-group-item"><div class="sprite-nhl sprite-vgk"><span>Vegas Golden Knights</span></div></div>
+    </div>
+
+
+    <script>
+        Sortable.create(eastConferenceList, {
+            ghostClass: "ghost"
+        });
+        Sortable.create(westConferenceList, {
+            ghostClass: "ghost"
+        });
+    </script>
+
+</body>
+</html>
