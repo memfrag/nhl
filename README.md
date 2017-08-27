@@ -1,3 +1,4 @@
 # nhl
 
-https://memfrag.github.io/nhl/
+https://memfrag.github.io/nhl/index.html
+
