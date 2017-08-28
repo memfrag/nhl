@@ -3,58 +3,173 @@
 <head>
     <meta charset="utf-8">
     <title>NHL</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="bootstrap.min.css"/>
     <link rel="stylesheet" href="nhl.css">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/Sortable/1.6.0/Sortable.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
 </head>
 <body>
 
-    <div id="eastConferenceList" class="list-group conference-list">
-        <div class="list-group-item"><div class="sprite-nhl sprite-car"><span>Carolina Hurricanes</span></div></div>
-        <div class="list-group-item"><div class="sprite-nhl sprite-cbj"><span>Columbus Blue Jackets</span></div></div>
-        <div class="list-group-item"><div class="sprite-nhl sprite-njd"><span>New Jersey Devils</span></div></div>
-        <div class="list-group-item"><div class="sprite-nhl sprite-nyi"><span>New York Islanders</span></div></div>
-        <div class="list-group-item"><div class="sprite-nhl sprite-nyr"><span>New York Rangers</span></div></div>
-        <div class="list-group-item"><div class="sprite-nhl sprite-phi"><span>Philadelphia Flyers</span></div></div>
-        <div class="list-group-item"><div class="sprite-nhl sprite-pit"><span>Pittsburgh Penguins</span></div></div>
-        <div class="list-group-item"><div class="sprite-nhl sprite-wsh"><span>Washington Capitals</span></div></div>
-        <div class="list-group-item"><div class="sprite-nhl sprite-bos"><span>Boston Bruins</span></div></div>
-        <div class="list-group-item"><div class="sprite-nhl sprite-buf"><span>Buffalo Sabres</span></div></div>
-        <div class="list-group-item"><div class="sprite-nhl sprite-det"><span>Detroit Red Wings</span></div></div>
-        <div class="list-group-item"><div class="sprite-nhl sprite-fla"><span>Florida Panthers</span></div></div>
-        <div class="list-group-item"><div class="sprite-nhl sprite-mtl"><span>Montreal Canadiens</span></div></div>
-        <div class="list-group-item"><div class="sprite-nhl sprite-ott"><span>Ottawa Senators</span></div></div>
-        <div class="list-group-item"><div class="sprite-nhl sprite-tbl"><span>Tampa Bay Lightning</span></div></div>
-        <div class="list-group-item"><div class="sprite-nhl sprite-tor"><span>Toronto Maple Leafs</span></div></div>
+    <div id="content">
+
+        <div id="easternConference" class="conference">
+            <div class="conference-header">Eastern Conference</div>
+            <div id="easternConferenceList" class="list-group conference-list">
+                <div class="list-group-item" data-team="bos"><div class="sprite-nhl sprite-bos"><span>Boston Bruins</span></div></div>
+                <div class="list-group-item" data-team="buf"><div class="sprite-nhl sprite-buf"><span>Buffalo Sabres</span></div></div>
+                <div class="list-group-item" data-team="car"><div class="sprite-nhl sprite-car"><span>Carolina Hurricanes</span></div></div>
+                <div class="list-group-item" data-team="cbj"><div class="sprite-nhl sprite-cbj"><span>Columbus Blue Jackets</span></div></div>
+                <div class="list-group-item" data-team="det"><div class="sprite-nhl sprite-det"><span>Detroit Red Wings</span></div></div>
+                <div class="list-group-item" data-team="fla"><div class="sprite-nhl sprite-fla"><span>Florida Panthers</span></div></div>
+                <div class="list-group-item" data-team="mtl"><div class="sprite-nhl sprite-mtl"><span>Montreal Canadiens</span></div></div>
+                <div class="list-group-item" data-team="njd"><div class="sprite-nhl sprite-njd"><span>New Jersey Devils</span></div></div>
+                <div class="list-group-item" data-team="nyi"><div class="sprite-nhl sprite-nyi"><span>New York Islanders</span></div></div>
+                <div class="list-group-item" data-team="nyr"><div class="sprite-nhl sprite-nyr"><span>New York Rangers</span></div></div>
+                <div class="list-group-item" data-team="ott"><div class="sprite-nhl sprite-ott"><span>Ottawa Senators</span></div></div>
+                <div class="list-group-item" data-team="phi"><div class="sprite-nhl sprite-phi"><span>Philadelphia Flyers</span></div></div>
+                <div class="list-group-item" data-team="pit"><div class="sprite-nhl sprite-pit"><span>Pittsburgh Penguins</span></div></div>
+                <div class="list-group-item" data-team="tbl"><div class="sprite-nhl sprite-tbl"><span>Tampa Bay Lightning</span></div></div>
+                <div class="list-group-item" data-team="tor"><div class="sprite-nhl sprite-tor"><span>Toronto Maple Leafs</span></div></div>
+                <div class="list-group-item" data-team="wsh"><div class="sprite-nhl sprite-wsh"><span>Washington Capitals</span></div></div>
+            </div>
+        </div>
+
+        <div id="westernConference" class="conference">
+            <div class="conference-header">Western Conference</div>
+            <div id="westernConferenceList" class="list-group conference-list">
+                <div class="list-group-item" data-team="ana"><div class="sprite-nhl sprite-ana"><span>Anaheim Ducks</span></div></div>
+                <div class="list-group-item" data-team="ari"><div class="sprite-nhl sprite-ari"><span>Arizona Coyotes</span></div></div>
+                <div class="list-group-item" data-team="cgy"><div class="sprite-nhl sprite-cgy"><span>Calgary Flames</span></div></div>
+                <div class="list-group-item" data-team="chi"><div class="sprite-nhl sprite-chi"><span>Chicago Blackhawks</span></div></div>
+                <div class="list-group-item" data-team="col"><div class="sprite-nhl sprite-col"><span>Colorado Avalanche</span></div></div>
+                <div class="list-group-item" data-team="dal"><div class="sprite-nhl sprite-dal"><span>Dallas Stars</span></div></div>
+                <div class="list-group-item" data-team="edm"><div class="sprite-nhl sprite-edm"><span>Edmonton Oilers</span></div></div>
+                <div class="list-group-item" data-team="lak"><div class="sprite-nhl sprite-lak"><span>Los Angeles Kings</span></div></div>
+                <div class="list-group-item" data-team="min"><div class="sprite-nhl sprite-min"><span>Minnesota Wild</span></div></div>
+                <div class="list-group-item" data-team="nsh"><div class="sprite-nhl sprite-nsh"><span>Nashville Predators</span></div></div>
+                <div class="list-group-item" data-team="sjs"><div class="sprite-nhl sprite-sjs"><span>San Jose Sharks</span></div></div>
+                <div class="list-group-item" data-team="stl"><div class="sprite-nhl sprite-stl"><span>St Louis Blues</span></div></div>
+                <div class="list-group-item" data-team="van"><div class="sprite-nhl sprite-van"><span>Vancouver Canucks</span></div></div>
+                <div class="list-group-item" data-team="vgk"><div class="sprite-nhl sprite-vgk"><span>Vegas Golden Knights</span></div></div>
+                <div class="list-group-item" data-team="wpg"><div class="sprite-nhl sprite-wpg"><span>Winnipeg Jets</span></div></div>
+            </div>
+        </div>
+
+        <div id="done-button-panel">
+            <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#doneModal">Submit My Picks</button>
+            <div id="resubmit-div"><div id="resubmit-label">Resubmit as many times as you like before <b>October 5</b>.</div></div>
+        </div>
+
     </div>
 
-    <div id="westConferenceList" class="list-group conference-list">
-        <div class="list-group-item"><div class="sprite-nhl sprite-chi"><span>Chicago Blackhawks</span></div></div>
-        <div class="list-group-item"><div class="sprite-nhl sprite-col"><span>Colorado Avalanche</span></div></div>
-        <div class="list-group-item"><div class="sprite-nhl sprite-dal"><span>Dallas Stars</span></div></div>
-        <div class="list-group-item"><div class="sprite-nhl sprite-min"><span>Minnesota Wild</span></div></div>
-        <div class="list-group-item"><div class="sprite-nhl sprite-nsh"><span>Nashville Predators</span></div></div>
-        <div class="list-group-item"><div class="sprite-nhl sprite-stl"><span>St Louis Blues</span></div></div>
-        <div class="list-group-item"><div class="sprite-nhl sprite-wpg"><span>Winnipeg Jets</span></div></div>
-        <div class="list-group-item"><div class="sprite-nhl sprite-ana"><span>Anaheim Ducks</span></div></div>
-        <div class="list-group-item"><div class="sprite-nhl sprite-ari"><span>Arizona Coyotes</span></div></div>
-        <div class="list-group-item"><div class="sprite-nhl sprite-cgy"><span>Calgary Flames</span></div></div>
-        <div class="list-group-item"><div class="sprite-nhl sprite-edm"><span>Edmonton Oilers</span></div></div>
-        <div class="list-group-item"><div class="sprite-nhl sprite-lak"><span>Los Angeles Kings</span></div></div>
-        <div class="list-group-item"><div class="sprite-nhl sprite-sjs"><span>San Jose Sharks</span></div></div>
-        <div class="list-group-item"><div class="sprite-nhl sprite-van"><span>Vancouver Canucks</span></div></div>
-        <div class="list-group-item"><div class="sprite-nhl sprite-vgk"><span>Vegas Golden Knights</span></div></div>
-    </div>
+    <!-- Modal -->
+    <div id="doneModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
 
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Submit My Picks</h4>
+          </div>
+          <div class="modal-body">
+            <p>Slack the following text to <a href="slack://user?team=T02RRGYU8&id=U033WFD4T">@martin</a>:</p>
+            <pre id="picks">This is a bunch of text.</pre>
+            <p>
+                <button type="button" id="to-clipboard" class="btn btn-success" data-clipboard-target="#picks">Copy to Clipboard</button>
+                <button type="button" class="btn btn-primary" onclick="location.href = 'slack://user?team=T02RRGYU8&id=U033WFD4T'">...and then Slack it</button>
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
 
     <script>
-        Sortable.create(eastConferenceList, {
-            ghostClass: "ghost"
+
+        var picksString = "";
+
+        function generatePicksString() {
+            const easternPicks = $("#easternConferenceList > .list-group-item").map( function() {
+                return $(this).attr('data-team');
+            }).get();
+            const westernPicks = $("#westernConferenceList > .list-group-item").map( function() {
+                return $(this).attr('data-team');
+            }).get();
+            const picks = {
+                "eastern": easternPicks,
+                "western": westernPicks
+            };
+            const json = JSON.stringify(picks);
+            const picksString = btoa(json);
+            const linebrokenPicksString = picksString.replace(/(.{60})/g, "$1\n");
+            $("#picks").text(linebrokenPicksString);
+        }
+
+        Sortable.create(easternConferenceList, {
+            ghostClass: "ghost",
+            group: "store-eastern",
+            store: {
+                /**
+                 * Get the order of elements. Called once during initialization.
+                 * @param   {Sortable}  sortable
+                 * @returns {Array}
+                 */
+                get: function (sortable) {
+                    var order = localStorage.getItem(sortable.options.group.name);
+                    return order ? order.split('|') : [];
+                },
+
+                /**
+                 * Save the order of elements. Called onEnd (when the item is dropped).
+                 * @param {Sortable}  sortable
+                 */
+                set: function (sortable) {
+                    var order = sortable.toArray();
+                    localStorage.setItem(sortable.options.group.name, order.join('|'));
+                }
+            },
+            onUpdate: function (evt) {
+                generatePicksString();
+            }
         });
-        Sortable.create(westConferenceList, {
-            ghostClass: "ghost"
+        Sortable.create(westernConferenceList, {
+            ghostClass: "ghost",
+            group: "store-western",
+            store: {
+                /**
+                 * Get the order of elements. Called once during initialization.
+                 * @param   {Sortable}  sortable
+                 * @returns {Array}
+                 */
+                get: function (sortable) {
+                    var order = localStorage.getItem(sortable.options.group.name);
+                    return order ? order.split('|') : [];
+                },
+
+                /**
+                 * Save the order of elements. Called onEnd (when the item is dropped).
+                 * @param {Sortable}  sortable
+                 */
+                set: function (sortable) {
+                    var order = sortable.toArray();
+                    localStorage.setItem(sortable.options.group.name, order.join('|'));
+                }
+            },
+            onUpdate: function (evt) {
+                generatePicksString();
+            }
+
         });
+
+        new Clipboard('#to-clipboard');
+
+        generatePicksString();
     </script>
 
 </body>
