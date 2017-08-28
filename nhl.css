@@ -47,7 +47,7 @@ textarea, input, button { outline: none; }
     white-space: nowrap;
     vertical-align: baseline;
     border-radius: .25em;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.3);
     font-weight: normal;
 }
 
