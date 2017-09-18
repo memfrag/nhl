@@ -73,9 +73,13 @@ textarea, input, button { outline: none; }
 }
 
 .list-group-item {
-    padding: 6px 0px 6px 10px;
+    padding: 6px 30px 6px 10px;
     text-align: left;
     width: 250px;
+    background-image: url("handle.png");
+    background-size: 16px 10px;
+    background-repeat: no-repeat;
+    background-position: 216px 13px
 }
 
 .conference-list {
