@@ -1,4 +1,37 @@
 
+var nhlTeams = [
+    "ana",
+    "ari",
+    "bos",
+    "buf",
+    "car",
+    "cbj",
+    "cgy",
+    "chi",
+    "col",
+    "dal",
+    "det",
+    "edm",
+    "fla",
+    "lak",
+    "min",
+    "mtl",
+    "njd",
+    "nsh",
+    "nyi",
+    "nyr",
+    "ott",
+    "phi",
+    "pit",
+    "sjs",
+    "stl",
+    "tbl",
+    "tor",
+    "van",
+    "vgk",
+    "wpg",
+    "wsh"
+];
 
 var persons = [
     "Dan", "Elin", "Eric", "Fredrik B", "John", "Jonas", "Linda", "Martin", "Robert", "Fredrik S"
@@ -61,7 +94,7 @@ function generateEasternTable() {
         for (var i = 0; i < persons.length; i++) {
             var person = persons[i];
             var pick = picks[person].eastern[j];
-            rowHTML += '\t\t<td><div class="sprite-nhl sprite-' + pick + '"><span style="padding-left: 20">' + pick.toUpperCase() + '</span></div></td>\n';
+            rowHTML += '\t\t<td class="td-' + pick + '" data-team="' + pick + '"><div class="sprite-nhl sprite-' + pick + '"><span style="padding-left: 20">' + pick.toUpperCase() + '</span></div></td>\n';
         }
         rowHTML += "\t</tr>\n";
         bodyHTML += rowHTML;
@@ -83,7 +116,7 @@ function generateWesternTable() {
         for (var i = 0; i < persons.length; i++) {
             var person = persons[i];
             var pick = picks[person].western[j];
-            rowHTML += '\t\t<td><div class="sprite-nhl sprite-' + pick + '"><span style="padding-left: 20">' + pick.toUpperCase() + '</span></div></td>\n';
+            rowHTML += '\t\t<td class="td-' + pick + '" data-team="' + pick + '"><div class="sprite-nhl sprite-' + pick + '"><span style="padding-left: 20">' + pick.toUpperCase() + '</span></div></td>\n';
         }
         rowHTML += "\t</tr>\n";
         bodyHTML += rowHTML;
