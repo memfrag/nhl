@@ -4,11 +4,37 @@
     <meta charset="utf-8">
     <title>NHL Picks 2017/2018</title>
     <link rel="stylesheet" href="bootstrap.min.css"/>
-    <link rel="stylesheet" href="nhl.css">
+    <link rel="stylesheet" href="picks.css">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="picks.js"></script>
 </head>
 <body>
     <h1>NHL Picks</h1>
+
+    <h2>Eastern Conference</h2>
+    <table class="table table-striped table-hover table-condensed">
+        <thead>
+            <tr id="eastern-table-header">
+            </tr>
+        </thead>
+        <tbody id="eastern-table-body">
+        </tbody>
+    </table>
+
+    <h2>Western Conference</h2>
+    <table class="table table-striped table-hover table-condensed">
+        <thead>
+            <tr id="western-table-header">
+            </tr>
+        </thead>
+        <tbody id="western-table-body">
+        </tbody>
+    </table>
+
+    <script>
+        generateEasternTable();
+        generateWesternTable();
+    </script>
 </body>
 </html>
