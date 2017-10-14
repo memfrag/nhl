@@ -118,7 +118,7 @@ var picks = {
 };
 
 function fetchStandings() {
-    $.ajax({dataType: "json", url: "http://memfrag.se/standings.php", crossDomain: true, success: function (data) {
+    $.ajax({dataType: "json", url: "http://memfrag.se/picks/standings.php", success: function (data) {
         console.log(data);
 
         var standings = {
