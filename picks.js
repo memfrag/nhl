@@ -118,7 +118,7 @@ var picks = {
 };
 
 function fetchStandings() {
-    $.getJSON("http://memfrag.se/standings.php", function (data) {
+    $.ajax({dataType: "json", url: "http://memfrag.se/standings.php", crossDomain: true, success: function (data) {
         console.log(data);
 
         var standings = {
@@ -175,7 +175,7 @@ function fetchStandings() {
                 });
             }
         });
-    });
+    }});
 }
 
 function generateEasternTable() {
