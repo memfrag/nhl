@@ -33,21 +33,7 @@
     </table>
 
     <script>
-        generateEasternTable();
-        generateWesternTable();
-        $(function() {
-            for (var i = 0; i < nhlTeams.length; i++) {
-                var team = nhlTeams[i];
-                console.log('.td-' + team);
-                $('.td-' + team).hover(function() {
-                    var hoverTeam = $(this).data("team");
-                    $('.td-' + hoverTeam).css('background-color', 'yellow');
-                }, function() {
-                    var hoverTeam = $(this).data("team");
-                    $('.td-' + hoverTeam).css('background-color', '');
-                });
-            }
-        });
+        fetchStandings();
     </script>
 </body>
 </html>

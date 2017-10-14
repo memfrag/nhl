@@ -33,11 +33,48 @@ var nhlTeams = [
     "wsh"
 ];
 
+var teamNameToShortName = {
+    "Anaheim Ducks": "ana",
+    "Arizona Coyotes": "ari",
+    "Boston Bruins": "bos",
+    "Buffalo Sabres": "buf",
+    "Carolina Hurricanes": "car",
+    "Columbus Blue Jackets": "cbj",
+    "Calgary Flames": "cgy",
+    "Chicago Blackhawks": "chi",
+    "Colorado Avalanche": "col",
+    "Dallas Stars": "dal",
+    "Detroit Red Wings": "det",
+    "Edmonton Oilers": "edm",
+    "Florida Panthers": "fla",
+    "Los Angeles Kings": "lak",
+    "Minnesota Wild": "min",
+    "Montreal Canadiens": "mtl",
+    "Montréal Canadiens": "mtl",
+    "New Jersey Devils": "njd",
+    "Nashville Predators": "nsh",
+    "New York Islanders": "nyi",
+    "New York Rangers": "nyr",
+    "Ottawa Senators": "ott",
+    "Philadelphia Flyers": "phi",
+    "Pittsburgh Penguins": "pit",
+    "San Jose Sharks": "sjs",
+    "St Louis Blues": "stl",
+    "St. Louis Blues": "stl",
+    "Tampa Bay Lightning": "tbl",
+    "Toronto Maple Leafs": "tor",
+    "Vancouver Canucks": "van",
+    "Vegas Golden Knights": "vgk",
+    "Winnipeg Jets": "wpg",
+    "Washington Capitals": "wsh"
+};
+
 var persons = [
-    "Dan", "Elin", "Eric", "Fredrik B", "John", "Jonas", "Linda", "Martin", "Robert", "Fredrik S"
+    "NHL", "Dan", "Elin", "Eric", "Fredrik B", "John", "Jonas", "Linda", "Martin", "Robert", "Fredrik S"
 ];
 
 var picks = {
+    "NHL": null,
     "Dan": {
         eastern: ["nyr", "det", "njd", "tor", "mtl", "pit", "fla", "ott", "bos", "car", "wsh", "buf", "cbj", "nyi", "tbl", "phi"],
         western: ["col", "edm", "van", "ana", "sjs", "lak", "cgy", "chi", "ari", "wpg", "dal", "vgk", "nsh", "min", "stl"]
@@ -79,6 +116,67 @@ var picks = {
         western: ["chi", "ana", "cgy", "min", "sjs", "stl", "edm", "nsh", "lak", "dal", "van", "vgk", "col", "wpg", "ari"]
     }
 };
+
+function fetchStandings() {
+    $.getJSON("http://memfrag.se/standings.php", function (data) {
+        console.log(data);
+
+        var standings = {
+            "eastern": [],
+            "western": []
+        };
+
+        var records = data.records;
+        for (var r = 0; r < records.length; r++) {
+            const record = records[r];
+            const conferenceName = record.conference.name;
+            for (var t = 0; t < record.teamRecords.length; t++) {
+                const teamRecord = record.teamRecords[t];
+                const teamName = teamRecord.team.name;
+                const conferenceRank = teamRecord.conferenceRank;
+                standings[conferenceName.toLowerCase()].push({
+				    name: teamName,
+				    rank: conferenceRank,
+                });
+            }
+        }
+
+        console.log(standings);
+
+        standings.eastern.sort(function(a, b) {
+            return a.rank - b.rank;
+        })
+
+        standings.eastern = standings.eastern.map(function (entry) {
+            return teamNameToShortName[entry.name];
+        });
+
+        standings.western.sort(function(a, b) {
+            return a.rank - b.rank;
+        })
+
+        standings.western = standings.western.map(function (entry) {
+            return teamNameToShortName[entry.name];
+        });
+
+        picks.NHL = standings;
+
+        generateEasternTable();
+        generateWesternTable();
+        $(function() {
+            for (var i = 0; i < nhlTeams.length; i++) {
+                var team = nhlTeams[i];
+                $('.td-' + team).hover(function() {
+                    var hoverTeam = $(this).data("team");
+                    $('.td-' + hoverTeam).css('background-color', 'yellow');
+                }, function() {
+                    var hoverTeam = $(this).data("team");
+                    $('.td-' + hoverTeam).css('background-color', '');
+                });
+            }
+        });
+    });
+}
 
 function generateEasternTable() {
     var headerHTML = "";
